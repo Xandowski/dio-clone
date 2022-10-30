@@ -18,6 +18,16 @@
 
 body {
   transition: all 0.5s linear;
+  width: 100vw;
+  background-color: #15161b;
+  height: 100vh;
+}
+
+body,
+input,
+textarea,
+button {
+  font: 400 16px "Open Sans", sans-serif;
 }
 
 button {
