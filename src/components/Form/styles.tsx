@@ -1,69 +1,106 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-interface InputSearchProps {
-  isInputSearchHidden?: boolean
+interface FormContainerProps {
+  buttonText: string
 }
 
-export const FormContainer = styled.form<InputSearchProps>`
-  @media only screen and (max-width: 768px){
-    width: ${({isInputSearchHidden}) => !isInputSearchHidden && '90vw'};
-    &:focus-within {
-      z-index: ${({isInputSearchHidden}) => !isInputSearchHidden && '10'};
-    }
-
-    input {
-      display: ${({isInputSearchHidden}) => isInputSearchHidden ? 'none' : 'block'};
-    }
-  }
-`
-
-export const Fieldset = styled.fieldset`
+export const FormContainer = styled.form<FormContainerProps>`
   display: flex;
-  align-items: center;
-  border-radius: 0.5rem;
-  background-color: #2d2d37;
-  border: none;
-  padding-left: 1rem;
-  margin: 0 0.5rem;
-  height: 2.75rem;
+  flex-direction: column;
+  gap: 2rem;
 
-  svg {
-    width: 24px;
-    height: 24px;
+  fieldset {
+    label {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #565656;
+      color: #8647ad;
+      margin-bottom: 1rem;
+
+
+      &:focus-within {
+        border-bottom-color: #8647ad;
+      }
+
+      input {
+        border: none;
+        width: 100%;
+        padding: 0.5rem;
+        background: transparent;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    
+    div:nth-child(1) {
+      margin-bottom: 3rem;
+      
+      > p {
+        color: #bf1650;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+
+        ::before {
+          display: inline;
+          content: "⚠ ";
+        }
+      }
+    }
+
+    div:nth-child(3) {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: ${({buttonText}) => buttonText  === 'criar minha conta grátis' &&'column'};
+      gap: ${({buttonText}) => buttonText  === 'criar minha conta grátis' &&'3rem'};
+
+      span {
+        font-size: 1rem;
+        font-weight: normal;
+
+        span {
+          color: #8647ad;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: normal;
+      }
+      
+      a{
+        font-weight: 500;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      a:nth-child(1) {
+        color: ${({buttonText}) => buttonText  === 'criar minha conta grátis' ? '#23dd6d' : '#b1d044'};
+        
+      }
+      a:nth-child(2) {
+        color: #1fbe7a;
+      }
+    }
+
+    
   }
 
-  &:focus-within {
-    border: 1px solid #e4105d;
-    background-color: #2d2d37;
-  }
-
-  @media only screen and (max-width: 768px) {
-    background-color: transparent;
-    width: 100%;
-  }
-`
-
-export const InputSearch = styled.input`
-  background: transparent;
-  border: none;
-  height: 2.125rem;
-  padding-left: 0.25rem;
-  caret-color: white;
   
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 
-  &:focus {
-    outline: none;
-    display: block;
-  }
-`
+  @media only screen and (max-width: 576px) {
+    fieldset {
+      div:nth-child(3) {
+        align-items: center;
 
-export const SearchButton = styled.button`
-  display: flex;
-  background-color: transparent;
-  color: white;
-  border: none;
-  outline: none;
+        a:nth-child(1) {
+          
+          
+        }
+      }
+    }
+  }
 `

@@ -11,21 +11,21 @@ interface NavbarButtonProps {
 }
 
 export const Menu = styled.nav<MenuProps>`
-  width: 100vw;
+  width: 100%;
   background-color: #151515;
   color: #f0fff0;
-  padding: ${({isHomePage}) =>  isHomePage ? '1.25rem 1rem' : '0.5rem 1rem'};
+  padding: ${({isHomePage}) =>  isHomePage ? '1.25rem 1rem' : '0.7rem 1.1rem'};
   display: flex;
 
   ul {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: ${({isHomePage}) => !isHomePage && 'flex-end'};
     width: 100%;
     gap: 1rem;
   }
 
-  div {
+  > div:nth-child(1) {
     img:nth-child(1) {
       width: ${({isHomePage}) => isHomePage && '100px'};
     }
@@ -106,7 +106,7 @@ export const Menu = styled.nav<MenuProps>`
 export const NavBarButton = styled(Link)<NavbarButtonProps>`
   background-color: #565656;
   border-radius: 2rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.2rem 1.5rem;
 
   &:hover {
     background-color: #e4105d;

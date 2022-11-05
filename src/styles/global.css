@@ -16,11 +16,16 @@
   }
 }
 
+html,
+#root {
+  width: 100%;
+  line-height: 1.15;
+}
+
 body {
   transition: all 0.5s linear;
-  width: 100vw;
-  background-color: #15161b;
-  height: 100vh;
+  width: 100%;
+  background-color: #1e192c;
 }
 
 body,
@@ -42,4 +47,12 @@ a {
 
 li {
   list-style: none;
+}
+
+input {
+  caret-color: white;
+}
+
+fieldset {
+  border: none;
 }

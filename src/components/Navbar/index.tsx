@@ -4,7 +4,8 @@ import LogoMinimized from '../../assets/images/logo-minimized.png'
 import LogoHome from '../../assets/images/logoHome.svg'
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import { Form } from "../Form"
+import { Form } from "../Form/Search"
+import { Profile } from "../Profile"
 
 interface NavbarProps {
   isHomePage?: boolean
@@ -33,28 +34,31 @@ export const Navbar = ({isHomePage}:NavbarProps) => {
       )}
       
       {isHomePage ? (
-          <ul>
-            <li>
-              <Link to="/lives">Live Coding</Link>
-            </li>
-            <li>
-              <BeGlobalButton 
-                to="/global"
-              >Be Global</BeGlobalButton>
-            </li>
-          </ul> 
+          <>
+            <ul>
+              <li>
+                <Link to="/lives">Live Coding</Link>
+              </li>
+              <li>
+                <BeGlobalButton 
+                  to="/global"
+                >Be Global</BeGlobalButton>
+              </li>
+            </ul> 
+            <Profile imageUrl="https://avatars.githubusercontent.com/u/40218226?v=4" variant="navbar"/>
+          </>
         ) : (
           <ul>
             <li>
               <Link to="/">Início</Link>
             </li>
             <li>
-              <NavBarButton to="/logar">ENTRAR</NavBarButton>
+              <NavBarButton to="/login">ENTRAR</NavBarButton>
             </li>
             <li>
               <NavBarButton 
                 variant="secondary"
-                to="/cadastro"
+                to="/register"
               >CADASTRAR</NavBarButton>
             </li>
           </ul>
