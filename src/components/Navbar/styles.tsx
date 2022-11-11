@@ -40,15 +40,15 @@ export const Menu = styled.nav<MenuProps>`
   }
 
   @media only screen and (max-width: 990px) {
-    align-items: center;
-    position: relative;
-    padding: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage ? '7rem 0' : isMenuOpen && isHomePage ? '1.25rem 1rem' : '0.5rem 1rem'};
+    align-items: ${({isMenuOpen, isHomePage}) => isMenuOpen && isHomePage ? 'flex-start' : 'center'};
+    position: ${({isMenuOpen}) => isMenuOpen ? 'absolute' : 'relative'};
+    padding: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage ? '7rem 0' : isMenuOpen && isHomePage ? '0.4rem 1rem' : '0.5rem 1rem'};
     flex-direction: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage && 'column'};
     justify-content: ${({isMenuOpen, isHomePage}) => isHomePage && isMenuOpen && 'flex-start'};
-    height: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage ? '100vh' : isHomePage && '70px'};
+    height: ${({isMenuOpen}) => isMenuOpen && '100vh' };
     gap: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage && '3.5rem'};
 
-    div {
+    > div:nth-child(1) {
       img:nth-child(1) {
         display: ${({isHomePage}) => isHomePage && 'none'};
       }
@@ -58,7 +58,7 @@ export const Menu = styled.nav<MenuProps>`
         width: ${({isHomePage}) => isHomePage && '40px'}
       }
     }
-      
+
     ul {
       position: ${({isMenuOpen, isHomePage}) => isHomePage && isMenuOpen && 'absolute'};
       display: ${({isMenuOpen}) => !isMenuOpen && 'none'};
@@ -81,7 +81,7 @@ export const Menu = styled.nav<MenuProps>`
     }
 
     button {
-      top: ${({isHomePage}) => isHomePage ? 'calc(70px/2)' : 'calc(52px/2)'};
+      top: calc(52px/2);
       div {
         background-color: ${({isMenuOpen}) => isMenuOpen ? '#f34c5d' : '#fff'};
       }
@@ -124,10 +124,6 @@ export const BeGlobalButton = styled(Link)`
   padding: 1rem 0.75rem;
   border-radius: 0.4rem;
   color: #000;
-
-  @media only screen and (max-width: 768px) {
-
-  }
 `
 
 export const Hamburger = styled.button`

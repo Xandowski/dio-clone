@@ -80,20 +80,25 @@ export const MainContainer = styled.main`
     }
 
     > section:nth-child(2) {
+      width: 100%;
       p {
         text-align: center;
       }
     }
 
     > section:nth-child(3) {
-    margin-top: 0;
-  }
+      margin-top: 0;
+    }
 
-    section {
+    > section:nth-child(2) {
       h1 {
         font-size: 2.3rem;
         text-align: center;
       }
+      
+    }
+
+    > section:nth-child(3){
       h2 {
         font-size: 1.875rem;
         text-align: center;

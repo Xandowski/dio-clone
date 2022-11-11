@@ -19,15 +19,10 @@ export const Button = styled(Link)<LinkProps>`
   font-size: 1rem;
   max-width: 210px;
   align-self: flex-start;
-
+  text-align: center;
   @media only screen and (max-width: 768px) {
     align-self: center;
   }
-
-  /* &:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  } */
 `
 
 export const InputButton = styled.input`

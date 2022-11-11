@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react"
 import { MdEmail, MdLock, MdPerson, MdPhone } from "react-icons/md"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FormContainer } from "./styles"
 import { useForm, Controller  } from 'react-hook-form'
 import { InputButton } from "../Button/Start/styles"
@@ -10,7 +10,7 @@ import * as yup from "yup"
 interface UserData {
   name: string
   email: string
-  cel: string
+  cell: string
   password: string
 }
 export interface FormProps {
@@ -27,7 +27,9 @@ const schema = yup.object({
 }).required()
 
 export const Form = ({title, description, buttonText}: FormProps) => {
-  const { register, control, handleSubmit, formState: { errors, isValid } } = useForm({
+  const navigate = useNavigate()
+  const [userData, setUserData] = useState()
+  const { control, handleSubmit, formState: { errors, isValid } } = useForm<UserData>({
     resolver: yupResolver(schema),
     mode: "onChange"
   })
@@ -36,9 +38,16 @@ export const Form = ({title, description, buttonText}: FormProps) => {
     const userData = {
       name: data.name,
       email: data.email,
-      cel: data.cel
+      cell: data.cell
     }
-    alert(JSON.stringify(userData)) 
+
+    setUserData(userData)
+  }
+  
+  const handleNavigate = () => {
+    if (isValid) {
+      navigate('/home')
+    }
   }
 
   return (
@@ -52,7 +61,8 @@ export const Form = ({title, description, buttonText}: FormProps) => {
               <>
                 <label htmlFor="name">
                   <MdPerson />
-                  <Controller 
+                  <Controller
+                    defaultValue = '' 
                     name="name"
                     control={control}
                     rules={{ required: "Esse campo é obrigatório" }}
@@ -66,7 +76,8 @@ export const Form = ({title, description, buttonText}: FormProps) => {
 
           <label htmlFor="email">
             <MdEmail />
-            <Controller 
+            <Controller
+              defaultValue = '' 
               name="email"
               control={control}
               render={({ field }) => <input type="email" {...field}  placeholder="E-mail"/>}
@@ -84,7 +95,8 @@ export const Form = ({title, description, buttonText}: FormProps) => {
               <>
                 <label htmlFor="cell">
                   <MdPhone />
-                  <Controller 
+                  <Controller
+                    defaultValue = '' 
                     name="cell"
                     control={control}
                     render={({ field }) => <input type="text" {...field} placeholder="Celular ex: 11961234567"/>}
@@ -97,7 +109,8 @@ export const Form = ({title, description, buttonText}: FormProps) => {
           
           <label htmlFor="password">
             <MdLock />
-            <Controller 
+            <Controller
+              defaultValue = '' 
               name="password"
               control={control}
               render={({ field }) => <input type="password" {...field} placeholder="Senha" />}
@@ -112,13 +125,14 @@ export const Form = ({title, description, buttonText}: FormProps) => {
 
         <InputButton
          type="submit"
-         value="Entrar" 
+         value="Entrar"
+         onClick={handleNavigate}
         />
           
         <div>
           {buttonText === 'entrar' ? (
             <>
-              <Link to="/forgot-password">Esqueci minha senha.</Link>
+              <Link to="/reset-password">Esqueci minha senha.</Link>
               <Link to="/register">Criar conta.</Link>
             </>
           ) : (
