@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react"
+import { useState } from "react"
 import { MdEmail, MdLock, MdPerson, MdPhone } from "react-icons/md"
 import { Link, useNavigate } from "react-router-dom"
 import { FormContainer } from "./styles"
@@ -17,7 +17,7 @@ export interface FormProps {
   title: string
   description: string
   buttonText: string
-}
+} 
 
 const schema = yup.object({
   name: yup.string().required('Campo obrigatório'),
@@ -29,23 +29,22 @@ const schema = yup.object({
 export const Form = ({title, description, buttonText}: FormProps) => {
   const navigate = useNavigate()
   const [userData, setUserData] = useState()
-  const { control, handleSubmit, formState: { errors, isValid } } = useForm<UserData>({
+  const defaultValues = {
+    name: '',
+    email: '',
+    cell: '',
+    password: ''
+  }
+  const { register, control, handleSubmit, formState: { errors, isValid } } = useForm<UserData>({
     resolver: yupResolver(schema),
-    mode: "onChange"
+    mode: "onBlur",
+    defaultValues,
+    reValidateMode: "onChange",
   })
+  
 
   const onSubmit = (data: UserData) => {
-    const userData = {
-      name: data.name,
-      email: data.email,
-      cell: data.cell
-    }
-
-    setUserData(userData)
-  }
-  
-  const handleNavigate = () => {
-    if (isValid) {
+    if(data) {
       navigate('/home')
     }
   }
@@ -61,12 +60,10 @@ export const Form = ({title, description, buttonText}: FormProps) => {
               <>
                 <label htmlFor="name">
                   <MdPerson />
-                  <Controller
-                    defaultValue = '' 
-                    name="name"
-                    control={control}
-                    rules={{ required: "Esse campo é obrigatório" }}
-                    render={({ field }) => <input type="text" {...field} placeholder="Nome completo"/>}
+                  <input
+                    type="text" 
+                    placeholder="Nome completo"
+                    {...register("name")}
                   />
                 </label>
                 {errors.name?.message && <p>{errors.name.message}</p>}
@@ -77,7 +74,7 @@ export const Form = ({title, description, buttonText}: FormProps) => {
           <label htmlFor="email">
             <MdEmail />
             <Controller
-              defaultValue = '' 
+               
               name="email"
               control={control}
               render={({ field }) => <input type="email" {...field}  placeholder="E-mail"/>}
@@ -96,7 +93,7 @@ export const Form = ({title, description, buttonText}: FormProps) => {
                 <label htmlFor="cell">
                   <MdPhone />
                   <Controller
-                    defaultValue = '' 
+                     
                     name="cell"
                     control={control}
                     render={({ field }) => <input type="text" {...field} placeholder="Celular ex: 11961234567"/>}
@@ -110,7 +107,7 @@ export const Form = ({title, description, buttonText}: FormProps) => {
           <label htmlFor="password">
             <MdLock />
             <Controller
-              defaultValue = '' 
+               
               name="password"
               control={control}
               render={({ field }) => <input type="password" {...field} placeholder="Senha" />}
@@ -126,7 +123,6 @@ export const Form = ({title, description, buttonText}: FormProps) => {
         <InputButton
          type="submit"
          value="Entrar"
-         onClick={handleNavigate}
         />
           
         <div>

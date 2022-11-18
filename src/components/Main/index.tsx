@@ -1,10 +1,12 @@
 import { Start } from "../Button/Start"
+import { Slider } from "../Slider"
 import { MainContainer } from "./styles"
 
 export const Main = () => {
   return (
     <MainContainer>
-        <div></div>
+      <div></div>
+      <div>
         <section>
           <h1>
             <span>Programe</span> 
@@ -24,7 +26,10 @@ export const Main = () => {
           </h2>
 
           <p>Desbloqueie o seu próximo nível de conhecimento e esja contratado pelas maiores empresas de tecnologia do páis.</p>
+
+          <Slider />
         </section>
-      </MainContainer>
+      </div>
+    </MainContainer>
   )
 }

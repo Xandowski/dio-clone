@@ -5,7 +5,6 @@ export const Index = () => {
   return (
     <>
       <Navbar />
-
       <Main/>
     </>
   )

@@ -54,7 +54,6 @@ export const FeedContainer = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    /* width: 90%; */
     > img {
       height: 40%;
       width: 100%;
@@ -93,5 +92,42 @@ export const FeedContent = styled.div`
         font-size: 1.3rem;
       }
     }
+  }
+`
+
+export const Ranking = styled.aside`
+padding: 0 6rem 0 2rem;
+
+div:nth-child(3){
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  > section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    > div {
+      width: 100%;
+    }
+
+    > span {
+      margin-right: 10px;
+    }
+  }
+}
+
+
+h2 {
+  font-size: 1.25rem;
+}
+  > div:nth-child(2) {
+    height: 2px;
+    width: 25px;
+    background-color: #f314b5;
+    margin: 10px 0 40px 0;
+
+    
   }
 `

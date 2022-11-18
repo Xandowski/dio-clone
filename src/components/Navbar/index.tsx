@@ -45,6 +45,7 @@ export const Navbar = ({isHomePage}:NavbarProps) => {
                 >Be Global</BeGlobalButton>
               </li>
             </ul> 
+            <Link to="/"> Sair</Link>
             <Profile imageUrl="https://avatars.githubusercontent.com/u/40218226?v=4" variant="navbar"/>
           </>
         ) : (

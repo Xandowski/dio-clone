@@ -17,6 +17,10 @@ export const Menu = styled.nav<MenuProps>`
   padding: ${({isHomePage}) =>  isHomePage ? '1.25rem 1rem' : '0.7rem 1.1rem'};
   display: flex;
 
+  > a {
+    align-self: center;
+    margin-right: 10px;
+  }
   ul {
     display: flex;
     align-items: center;
@@ -42,6 +46,7 @@ export const Menu = styled.nav<MenuProps>`
   @media only screen and (max-width: 990px) {
     align-items: ${({isMenuOpen, isHomePage}) => isMenuOpen && isHomePage ? 'flex-start' : 'center'};
     position: ${({isMenuOpen}) => isMenuOpen ? 'absolute' : 'relative'};
+    z-index: ${({isMenuOpen}) => isMenuOpen  && '100'};
     padding: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage ? '7rem 0' : isMenuOpen && isHomePage ? '0.4rem 1rem' : '0.5rem 1rem'};
     flex-direction: ${({isMenuOpen, isHomePage}) => isMenuOpen && !isHomePage && 'column'};
     justify-content: ${({isMenuOpen, isHomePage}) => isHomePage && isMenuOpen && 'flex-start'};

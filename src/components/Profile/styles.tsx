@@ -15,7 +15,7 @@ export const ProfilePicture = styled.div<ProfileProps>`
     width: ${({variant}) => variant === 'navbar' ? '38px' : '62px'};
     height: ${({variant}) => variant === 'navbar' ? '38px' : '62px'};
     border-radius: 50%;
-    border: 3px solid green;
+    border: 3px solid ${({variant}) => variant === 'ranking' ? 'white' : 'green'};
   }
   border-radius: 50%;
 `
@@ -23,14 +23,14 @@ export const ProfileInfo = styled.div<ProfileProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${({variant}) => variant === 'side' ? '0 2.5rem' : variant === 'feed' && '0 0 0 1rem'};
+  padding: ${({variant}) => variant === 'side' ? '0 2.5rem' : variant === 'feed' ? '0 0 0 1rem' : variant === 'ranking' && '0 0 0 0.5rem'};
   width: 100%;
   height: 64px;
 
   > div:nth-child(1){
     display: flex;
     flex-direction: ${({variant}) => variant === 'feed' && 'column'};
-    justify-content: ${({variant}) => variant === 'feed' ? 'space-around' : 'space-between'};
+    justify-content: ${({variant}) => variant === 'feed' ? 'space-around' : variant === 'side' && 'space-between'};
     height: ${({variant}) => variant === 'feed' && '100%'};
 
     > span:nth-child(2) {
@@ -45,7 +45,8 @@ export const ProfileInfo = styled.div<ProfileProps>`
   div:nth-child(2) {
     > div:nth-child(1){
       display: flex;
-      justify-content: space-between;
+      gap: ${({variant}) => variant === 'ranking' && '8px'};
+      justify-content: ${({variant}) => variant === 'side' && 'space-between'};
       margin-bottom: 3px;
     }
     
