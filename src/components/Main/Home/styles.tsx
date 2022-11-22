@@ -21,7 +21,7 @@ export const MainHomeContainer = styled.main`
   }
 
   @media only screen and (max-width: 768px) {
-   grid-template-columns: 1fr;
+   grid-template-columns: 98%;
 
    > section:nth-child(2) {
     

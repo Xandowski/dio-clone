@@ -16,12 +16,15 @@ export const SliderContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 50px;
     color: #fff;
     height: 100%;
     padding: 2rem;
     border-radius: 4px;
+    transition: all 150ms linear 0s;
+
+ 
 
     &:after {
       content: "";
@@ -33,6 +36,11 @@ export const SliderContainer = styled.div`
       left: -3px;
       top: -3px;
       z-index: -99;
+
+      &:hover{
+        left: -4px;
+        top: -4px;
+      }
     }
 
     > h2 {
@@ -63,10 +71,42 @@ export const SliderContainer = styled.div`
     > div {
       font-size: 0.8rem;
       display: flex;
+      align-items: flex-start;
+      height: fit-content;
       padding: 0;
       background: #161221;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        svg {
+          color: #e4105d;
+          width: 16px;
+          height: 16px;
+        }
+
+        > span{
+          margin-left: 12px;
+        }
+      }
     }
   }
   
  }
+`
+
+export const Button = styled.button`
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #e4105d;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.25rem;
+
+  &:hover {
+    background-color: #e4105d;
+  }
 `

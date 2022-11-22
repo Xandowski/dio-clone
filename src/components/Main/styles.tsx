@@ -45,6 +45,14 @@ export const MainContainer = styled.main`
     section:nth-child(2) {
       margin-top: 4rem;
       padding: 4.5rem 18rem 1rem;
+
+      @media only screen and (max-width: 1024px){
+        padding: 4.5rem 4rem 1rem;
+      }
+
+      @media only screen and (max-width: 768px){
+        padding: 4.5rem 0 1rem;
+      }  
     }
   }
 

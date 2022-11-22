@@ -1,16 +1,19 @@
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
-import { SliderContainer } from "./styles"
-import { useState } from "react"
+import { Button, SliderContainer } from "./styles"
+import { useEffect, useState } from "react"
 import { Arrow } from "../Arrow"
+import { IoMdSchool } from "react-icons/io"
+import { GoProject } from "react-icons/go"
 
 export const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [windowSize, setWindowSize] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slides: {
-      perView: 3,
+      perView: windowSize <= 768 ? 1 : windowSize > 768 && windowSize <= 1024 ? 2 : 3,
       spacing: 20,
     },
     slideChanged(slider) {
@@ -22,7 +25,11 @@ export const Slider = () => {
     }
   })
 
-  // console.log(window.screen.width)
+  useEffect(() => {
+    setWindowSize(window.screen.width)
+  }, [])
+  
+  console.log(windowSize)
 
   return (
     <SliderContainer >
@@ -39,9 +46,10 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>124 atividades <span> 27 projetos</span></span>
+            <span> <IoMdSchool/> 124 atividades <span> <GoProject/> 27 projetos</span></span>
             
           </div>
+          <Button>Ver Carreira</Button>
         </div>
         <div className="keen-slider__slide">
            <h2>Carreira <br/> Front-end</h2>
@@ -57,8 +65,9 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>107 atividades <span> 23 projetos</span></span>
+            <span> <IoMdSchool/> 107 atividades <span> <GoProject/> 23 projetos</span></span>
           </div>
+          <Button>Ver Carreira</Button>
         </div>
         <div className="keen-slider__slide">
           <h2>Carreira <br/> Mobile</h2>
@@ -70,8 +79,10 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>80 atividades <span> 16 projetos</span></span>
+            <span> <IoMdSchool/> 80 atividades <span> <GoProject/> 16 projetos</span></span>
           </div>
+
+          <Button>Ver Carreira</Button>
         </div>
         <div className="keen-slider__slide">
           <h2>Carreira <br/> Infra e DevOps</h2>
@@ -83,9 +94,11 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>41 atividades <span> 6 projetos</span></span>
+            <span> <IoMdSchool/> 41 atividades <span> <GoProject/> 6 projetos</span></span>
             
           </div>
+
+          <Button>Ver Carreira</Button>
         </div>
         <div className="keen-slider__slide">
           <h2>Carreira do <br/> Futuro</h2>
@@ -98,9 +111,11 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>88 atividades <span> 17 projetos</span></span>
+            <span> <IoMdSchool/> 88 atividades <span> <GoProject/> 17 projetos</span></span>
             
           </div>
+
+          <Button>Ver Carreira</Button>
         </div>
         <div className="keen-slider__slide">
           <h2>Carreira <br/> Infra e DevOps</h2>
@@ -112,9 +127,10 @@ export const Slider = () => {
           </ul>
 
           <div>
-            <span>41 atividades <span> 6 projetos</span></span>
+            <span> <IoMdSchool/> 41 atividades <span> <GoProject/> 6 projetos</span></span>
             
           </div>
+          <Button>Ver Carreira</Button>
         </div>
       </div>
       {loaded && instanceRef.current && (

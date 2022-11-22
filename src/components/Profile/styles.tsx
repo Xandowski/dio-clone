@@ -16,6 +16,8 @@ export const ProfilePicture = styled.div<ProfileProps>`
     height: ${({variant}) => variant === 'navbar' ? '38px' : '62px'};
     border-radius: 50%;
     border: 3px solid ${({variant}) => variant === 'ranking' ? 'white' : 'green'};
+
+   
   }
   border-radius: 50%;
 `
