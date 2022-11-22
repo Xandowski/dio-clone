@@ -51,7 +51,7 @@ This is a clone app of [DIO](https://www.dio.me/). My focus on this app was reac
   <a href="https://keen-slider.io/">
     <img src="https://img.shields.io/badge/keen slider-20232A?style=for-the-badge&logo=keen-slider" alt="keen-slider"/>
   </a>
-  <a href="https://keen-slider.io/">
+  <a href="https://vitejs.dev/">
     <img src="https://img.shields.io/badge/vite-20232A?style=for-the-badge&logo=vite" alt="vite"/>
   </a>
 </p>
