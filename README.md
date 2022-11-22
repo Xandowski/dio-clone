@@ -73,4 +73,8 @@ git clone https://github.com/xandowski/dio-clone.git && cd dio-clone
 npm i
 ```
 
-Download [live server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension on vscode and run.
+and have fun 🎉
+
+```sh
+npm run dev
+```
