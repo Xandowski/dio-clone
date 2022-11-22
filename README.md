@@ -2,7 +2,7 @@
 
 <img align="left" width="60px" src="./src/assets/images/orange-tech.svg">
 <img align="right" width="60px" src="./src/assets/images/orange-tech.svg">
-<h1>Pokédex</h1>
+<h1>DIO Clone</h1>
 <img align="" width="60px" src="./src/assets/images/logo.svg">
 
 This application was developed during the Bootcamp <spabn>Orange Tech +</span> by [DIO](https://web.dio.me/) and [Banco Inter]().
